@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Crear y listar las bases de datos
+	</title>
+
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+
+	<script type="text/javascript" href="bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/crearbasesdedatos.js"></script>
+</head>
+<body background="pas.jpg" ng-app="myApp">
+<ul class="nav nav-pills navbar-fixed-top navbar-inverse">
+<li role="presentation" ><a href="index.html">Index</a></li>
+  <li role="presentation" ><a href="crearcampos.html">Actores</a></li>
+  <li role="presentation" ><a href="creartablas.html">Tablas</a></li>
+  <li role="presentation" class="active"><a href="crearbasesdedatos.html">Bases De datos</a></li>
+</ul>
+<br><br><br>
+<h1 align="center">
+		<p>Listado de bases de datos</p>
+	</h1>
+	<br><br><br>
+	<div ng-controller="ControlGuardar" class="col-sm-5">
+		<div class="form-group">
+			<label for="usr">Nombre:</label>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				<input ng-model="nombre" placeholder="Nombre de la base de datos a crear" class="form-control txtnombre" />
+			</div>
+		</div>
+		<div class="form-group">
+			<button type="button" class="btn btn-primary" ng-click="postdata(nombre)"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+		</div>
+		<div class="form-group">
+			<span class="alert alert-info">{{message}}</span>
+		</div>
+	</div>
+	<div ng-controller="ControlBorrar" class="col-sm-5">
+		<div class="form-group">
+			<label for="usr">Nombre de la base de datos a borrar:</label>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				<input ng-model="nombre" placeholder="Base de datos a borrar" class="form-control txtnombre" />
+			</div>
+		</div>
+		<div class="form-group">
+			<button type="button" class="btn btn-primary" ng-click="postdata(nombre)"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
+		</div>
+		<div class="form-group">
+			<span class="alert alert-info">{{message}}</span>
+		</div>
+	</div>
+	<br><br>
+	<div ng-controller="ControlListar" class="col-sm-5">
+		<table class="table table-striped table-hover">
+			<thead>
+				<th>Nombre</th>
+			</thead>
+			<tr ng-repeat="database in databases">
+				<td>{{database.Database}}</td>
+			</tr>
+		</table>
+	</div>
+	
+</body>
+</html>
